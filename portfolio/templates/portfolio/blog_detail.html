@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}{{ post.title }} - My Portfolio{% endblock %}
+{% block content %}
+<div class="bg-white rounded shadow p-6">
+    {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="rounded mb-4">
+    {% endif %}
+    <h1 class="text-3xl font-bold mb-4">{{ post.title }}</h1>
+    <p class="text-gray-500 text-sm mb-6">{{ post.created_at|date:"F j, Y" }}</p>
+    <div class="prose max-w-none">
+        {{ post.content|linebreaks }}
+    </div>
+</div>
+<a href="{% url 'blog_list' %}" class="mt-6 inline-block text-blue-500">← Back to Blog</a>
+{% endblock %}

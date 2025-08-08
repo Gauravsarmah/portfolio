@@ -1,0 +1,31 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block title %}Home - My Portfolio{% endblock %}
+{% block content %}
+ <!-- Left: profile image -->
+    <div class="text-center mb-6 md:mb-0">
+      <img src="{% static 'images/profile.jpg' %}" alt="Profile" class="w-36 h-36 rounded-full mx-auto shadow-lg object-cover">
+    </div>
+<h1 class="text-3xl font-bold mb-4">Hi, I'm Gaurav Sarmah</h1>
+<p class="mb-6">I am an IT Engineer specializing in Core IT infrastructure, networking, and toll management systems. Skilled in computer hardware troubleshooting, network setup, and security, I have hands-on experience with routers, switches, servers, and CCTV systems. My expertise extends to Toll Management System (TMS) operations, RFID configuration, ANPR systems, and hardware/software maintenance. I also have a solid foundation in Python, databases, and basic web development. Known for strong problem-solving, communication, and time management skills, I excel in delivering reliable technical solutions and collaborating effectively in team environments.</p>
+
+<h2 class="text-2xl font-semibold mb-2">Skills</h2>
+<div class="flex flex-wrap gap-4">
+    {% for skill in skills %}
+    <span class="bg-blue-100 px-3 py-1 rounded">{{ skill.header }}</span>
+    {% endfor %}
+</div>
+
+<h2 class="text-2xl font-semibold mt-8 mb-2">Featured Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for project in projects %}
+    <div class="bg-white shadow rounded p-4">
+        <h3 class="text-lg font-bold">{{ project.title }}</h3>
+        <p>{{ project.description|truncatechars:100 }}</p>
+        {% if project.link %}
+        <a href="{{ project.link }}" target="_blank" class="text-blue-500">View Project</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

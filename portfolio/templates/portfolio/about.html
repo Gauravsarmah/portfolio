@@ -1,0 +1,62 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}About - My Portfolio{% endblock %}
+{% load static %}
+{% block content %}
+<div class="max-w-4xl mx-auto py-12 px-4">
+
+  <!-- Hero / Short intro (use this shorter line on home if needed) -->
+  <div class="text-center mb-10">
+    <h1 class="text-4xl font-bold mb-2">Hi, I'm  Gaurav Sarmah</h1>
+    <p class="text-gray-600">IT Engineer • Hardware & Networking • TMS Systems Specialist</p>
+    <!-- Short tagline for home: -->
+    <p class="text-gray-500 mt-4 italic">Combining hands-on hardware & networking expertise with growing Django/Python development skills.</p>
+  </div>
+
+  <!-- Profile & Full About -->
+  <div class="md:flex md:items-start gap-8">
+   
+
+    <!-- Right: about text -->
+    <div class="">
+      <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        I’m an IT Engineer with a strong foundation in <strong>hardware and networking</strong>, and hands-on experience in <strong>Toll Management Systems (TMS)</strong>. I’ve completed a comprehensive hardware and networking course, giving me the skills to troubleshoot, maintain, and optimize computer systems, networks, and related infrastructure.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Currently, I work at a toll plaza, where I manage and maintain the TMS system — ensuring smooth toll operations, monitoring transactions, and performing system upgrades. I also have practical experience with <strong>RFID systems, server maintenance, router and switch configuration</strong>, and <strong>database management</strong>.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Passionate about learning, I’m expanding my skills into <strong>web development with Django and Python</strong>, aiming to combine my technical expertise with software solutions that solve real-world problems.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed">
+        Outside of work, I enjoy exploring new technologies, refining my coding skills, and staying up-to-date with industry trends.
+      </p>
+
+    
+    </div>
+  </div>
+<h2 class="text-2xl font-semibold mt-8 mb-2">Skills</h2>
+
+<ol class="list-decimal">
+    {% for header in skheader %}
+        <li>
+            <h2 class="text-2xl">{{ header.header }}</h2>
+        </li>
+        <ul class="list-disc ml-6">
+            {% for skill in header.skill_set.all %}
+                <li>{{ skill.name }}</li>
+            {% empty %}
+                <li>No skills found</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ol>
+
+
+
+
+
+{% endblock %}

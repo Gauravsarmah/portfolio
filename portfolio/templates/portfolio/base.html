@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <meta name="description" content="Portfolio of Your Name - Web Developer, Django Specialist">
+<meta name="keywords" content="Django, Web Developer, Portfolio, Python">
+<meta name="author" content="Your Name">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow p-4">
+        <div class="max-w-5xl mx-auto flex justify-between">
+            <h1 class="text-xl font-bold"><a href="/">My Portfolio</a></h1>
+            <ul class="flex space-x-6">
+              <li><a href="/" class="{% if request.path == '/' %}text-blue-500{% else %}hover:text-blue-500{% endif %}">Home</a></li>
+        <li><a href="/about/" class="{% if request.path == '/about/' %}text-blue-500{% else %}hover:text-blue-500{% endif %}">About</a></li>
+        <li><a href="/projects/" class="{% if request.path == '/projects/' %}text-blue-500{% else %}hover:text-blue-500{% endif %}">Projects</a></li>
+        <li><a href="/blog/" class="{% if request.path == '/blog/' %}text-blue-500{% else %}hover:text-blue-500{% endif %}">Blog</a></li>
+        <li><a href="/contact/" class="{% if request.path == '/contact/' %}text-blue-500{% else %}hover:text-blue-500{% endif %}">Contact</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto p-6">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

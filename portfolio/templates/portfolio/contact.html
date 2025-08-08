@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}Contact - My Portfolio{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Contact Me</h1>
+{% if success %}
+<p class="bg-green-100 text-green-800 p-4 rounded">Message sent successfully!</p>
+{% endif %}
+<form method="POST" class="space-y-4">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Your Name" class="w-full border p-2 rounded" required>
+    <input type="email" name="email" placeholder="Your Email" class="w-full border p-2 rounded" required>
+    <textarea name="message" placeholder="Your Message" class="w-full border p-2 rounded" required></textarea>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Send</button>
+</form>
+{% endblock %}
